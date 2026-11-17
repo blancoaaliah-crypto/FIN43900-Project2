@@ -484,7 +484,9 @@ burry/
         ├── Project 2 validation-and-ai-use.md
         └── Project 2 Locked Changed Input.md
 
-The requirements.txt file is intended to be committed with the completed repository. Demonstration video links and transcripts will be added when available.
+The requirements.txt file is included in the GitHub repository to support reproducible installation.
+
+Demonstration video links and transcripts will be added when available.
 
 12. Installation and Reproduction Instructions
 
@@ -523,7 +525,7 @@ Step 4 — Run the Validation Script
 
 python project2_validation.py
 
-The previously observed result was five passing checks:
+The expected validation output is:
 
 Return calculation: PASS
 Volatility calculation: PASS
@@ -585,13 +587,19 @@ Run the constrained optimization with the original inputs, then reduce each expe
 
 Compare the resulting portfolio weights, expected return, volatility, and reserve coverage with Section 8.
 
-Reproducibility Limitations
+Clean-Environment Reproduction
 
-The project scripts and application were run successfully in an existing local Python virtual environment.
+On November 17, 2026, I completed a clean-environment reproduction test using a fresh clone of my GitHub repository and a newly created Python virtual environment.
 
-A separate clean-environment installation and full end-to-end reproduction have not yet been independently verified.
+I successfully installed all required dependencies using requirements.txt, ran project2_validation.py and compare_windows.py, and launched the Streamlit application using project2_app.py.
 
-External data availability, library versions, and historical-data revisions may affect results.
+All five automated mathematical validation checks passed. The stress-test results, process stop condition, and historical estimation-window calculations were successfully reproduced.
+
+I also confirmed that the Streamlit application launched and functioned correctly in the clean environment.
+
+This test demonstrates that the repository can be installed and executed without relying on my original Python virtual environment.
+
+External data availability, dependency versions, and historical-data revisions may affect future reproduction results.
 
 13. AI Use and Independent Review
 
