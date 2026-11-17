@@ -3,36 +3,20 @@ Project 2 — Investment Management Application
 Course: FIN 43900 — AI-Augmented Finance
 Project: Meridian Foundation Reserve
 Portfolio Value: $100 million
-Final Investment Recommendation: Defer Implementation
+Final Investment Recommendation: DEFER IMPLEMENTATION
 Provisional New-Capital Allocation: 0%
 
 1. Project Overview
 
-For Project 2, I developed a Python and Streamlit investment management application for the fictional Meridian Foundation Reserve.
+For Project 2, I developed a Python and Streamlit investment management application for the fictional Meridian Foundation Reserve. The application supports an investment committee decision by evaluating portfolio construction, expected returns, volatility, mandate compliance, point-in-time information, and portfolio sensitivity to changing assumptions.
 
-The foundation manages a $100 million portfolio with a 6.5% annual return objective and additional requirements for reserve coverage, liquidity, issuer concentration, and portfolio allocation.
+The foundation manages a hypothetical $100 million portfolio with an annual expected-return objective of at least 6.5%. The investment strategy must also satisfy reserve, liquidity, issuer-concentration, and allocation requirements.
 
-The application compares portfolio construction strategies, evaluates mandate compliance, incorporates a point-in-time interest rate signal, and tests portfolio performance under alternative assumptions.
+The application compares multiple portfolio strategies, performs constrained optimization, incorporates an interest-rate signal, and evaluates portfolio performance through stress testing and historical estimation-window comparisons.
 
-I completed independent validation through baseline comparisons, stress testing, changed-input testing, historical estimation-window sensitivity analysis, point-in-time signal testing, and application output reviews.
+Final decision: Defer implementation. Although the original constrained portfolio satisfies the currently checkable mandate requirements, the validation results demonstrate that the strategy is sensitive to relatively small changes in assumptions.
 
-My final recommendation is to defer implementation based on the results of the completed validation.
-
-2. Educational and AI Disclosure
-
-This project is an educational investment management simulation and does not constitute investment advice.
-
-AI tools assisted with planning, Python and Streamlit development, debugging, explanations, and documentation.
-
-I independently ran and reviewed the application, evaluated portfolio calculations and mandate results, and completed an AI-off prediction before running the changed-input test.
-
-I compared the prediction with the application's observed results and used the completed validation findings to support my investment recommendation.
-
-AI-generated outputs were not assumed to be correct without review.
-
-3. Investment Mandate
-
-The Meridian Foundation Reserve has the following investment requirements:
+2. Investment Mandate
 
 Requirement
 
@@ -42,13 +26,13 @@ Portfolio value
 
 $100 million
 
-Annual return objective
+Annual expected return
 
 At least 6.5%
 
-Minimum reserve-eligible assets
+Reserve-eligible assets
 
-3%
+At least 3%
 
 Five-business-day liquidity
 
@@ -58,158 +42,109 @@ Maximum issuer concentration
 
 8%
 
-Portfolio allocation
+Portfolio weights
 
-Long-only; weights total 100%
+Long-only; total 100%
 
-Treasury securities and diversified funds are treated as exempt from the individual issuer concentration restriction under the application's assumptions.
+CIO calendar-year loss rule
 
-The CIO's calendar-year loss rule remains unresolved. The application therefore reports compliance only with the currently checkable mandate requirements.
+Not fully specified
 
-4. Investment Universe
+Under the application's assumptions, Treasury securities and diversified investment funds are exempt from the individual issuer-concentration restriction.
 
-The application evaluates four asset classes:
+The CIO's calendar-year loss rule remains unresolved. Consequently, the application distinguishes between satisfying the implemented requirements and receiving complete investment approval.
+
+A result of PASS CHECKABLE RULES does not constitute full mandate certification.
+
+3. Investment Universe
+
+The portfolio contains four asset classes:
 
 Asset
 
-Role
+Investment Role
+
+Baseline Expected Return
 
 Treasury bills
 
-Short-term reserves and liquidity
+Liquidity and short-term reserves
+
+3.50%
 
 10-year Treasury notes
 
 Government fixed-income exposure
 
+4.30%
+
 Investment-grade bond fund
 
 Diversified fixed-income exposure
+
+5.00%
 
 Global equity index fund
 
 Long-term growth exposure
 
+8.00%
+
 The application compares four portfolio approaches:
 
-Equal-weight allocation.
+Equal-weight portfolio — 25% in each asset.
 
-Inverse-volatility allocation.
+Inverse-volatility portfolio — allocation based on relative asset volatility.
 
-Benchmark allocation.
+Benchmark portfolio — 40% investment-grade bonds and 60% global equities.
 
-Constrained portfolio optimization.
+Constrained optimized portfolio — searches for a qualifying allocation under the implemented mandate.
 
-The benchmark uses 40% investment-grade bonds and 60% global equities.
+The constrained optimization uses a discrete 5-percentage-point allocation grid. The selected portfolio is therefore the best qualifying result within the modeled search grid, not a proven continuous global optimum.
 
-5. Application Features
+4. Application Features
 
 Portfolio Construction
 
-The application calculates portfolio expected returns, estimated volatility, and investment allocations.
-
-It compares equal-weight, inverse-volatility, benchmark, and constrained portfolios.
-
-The constrained optimizer searches for allocations that satisfy the implemented mandate requirements.
+The application calculates portfolio expected returns, estimated annual volatility, portfolio weights, and comparisons between alternative investment strategies.
 
 Mandate Compliance
 
-The application evaluates:
-
-Expected annual return.
-
-Reserve-eligible asset coverage.
-
-Five-business-day liquidity.
-
-Issuer concentration.
-
-Long-only investment weights.
-
-Total portfolio allocation.
-
-The application reports PASS CHECKABLE RULES when the implemented requirements are satisfied.
+The application evaluates expected return, reserve coverage, five-business-day liquidity, issuer concentration, long-only allocations, and portfolio weights totaling 100%.
 
 Point-in-Time Interest Rate Signal
 
 The application incorporates the DGS10 daily 10-year Treasury yield series.
 
-The signal uses decision-date controls intended to prevent later observations from entering earlier investment decisions.
+Decision-date filtering is intended to prevent observations from after the selected decision date from influencing earlier investment decisions.
 
-This supports point-in-time analysis and reduces the risk of look-ahead bias.
+This reduces look-ahead bias in the interest-rate signal. The historical ETF proxy dataset has not been established as a fully point-in-time investment backtest.
 
 Stress Testing
 
-The application evaluates the effect of:
+The application evaluates how the original fixed portfolio responds to reduced expected returns, increased volatility, transaction costs, and higher reserve requirements.
 
-Lower expected returns.
+Historical Estimation-Window Analysis
 
-Transaction costs.
+Historical proxy data includes:
 
-Higher reserve requirements.
+SGOV — short-term Treasury exposure
 
-These tests help identify whether the original portfolio remains compliant when assumptions change.
+IEF — intermediate-term Treasury exposure
 
-Historical Estimation-Window Sensitivity
+LQD — investment-grade corporate bonds
 
-The application uses monthly historical proxy data for:
+VT — global equities
 
-SGOV
-
-IEF
-
-LQD
-
-VT
-
-It compares portfolio estimates under the original Lab 14 assumptions, the full historical sample, and the most recent 36 months.
+The application compares results from the original Lab 14 assumptions, the full available historical sample, and the most recent 36 months.
 
 Changed-Input Testing
 
-The application allows expected-return assumptions to change and re-optimizes the constrained portfolio.
+The application allows expected-return assumptions to change and then re-optimizes the portfolio.
 
-I completed an AI-off prediction before running the changed-input test and compared my prediction against the actual results.
+The changed-input test compares the original allocation with the allocation selected after the input changes.
 
-6. Selected Portfolio Results
-
-The original constrained optimizer selected the following allocation:
-
-Asset
-
-Allocation
-
-Treasury bills
-
-0%
-
-10-year Treasury notes
-
-20%
-
-Investment-grade bond fund
-
-25%
-
-Global equity index fund
-
-55%
-
-Total
-
-100%
-
-Expected annual return: 6.51%
-Estimated annual volatility: 9.44%
-Reserve coverage: 20%
-Mandate verdict: PASS CHECKABLE RULES
-
-The constrained portfolio met the 6.5% return objective with lower estimated volatility than the benchmark.
-
-However, its expected return exceeded the objective by only 0.01 percentage points.
-
-7. Completed Validation Results
-
-Baseline Comparison
+5. Baseline Portfolio Results
 
 Portfolio
 
@@ -235,41 +170,161 @@ Constrained optimized
 
 9.44%
 
-The inverse-volatility portfolio produced low estimated volatility but did not meet the return objective.
+The constrained optimizer selected:
 
-The constrained portfolio met the objective with lower estimated volatility than the benchmark.
+Asset
 
-Stress-Test Results
+Allocation
 
-I tested the original fixed allocation under expected-return reductions, transaction costs, and an increased reserve requirement.
+Treasury bills
 
-Scenario
+0%
+
+10-year Treasury notes
+
+20%
+
+Investment-grade bond fund
+
+25%
+
+Global equity index fund
+
+55%
+
+Total
+
+100%
+
+Original portfolio results:
+
+Expected annual return: 6.51%
+
+Estimated annual volatility: 9.44%
+
+Reserve-eligible allocation: 20%
+
+Mandate verdict: PASS CHECKABLE RULES
+
+The expected return exceeds the 6.5% objective by only 0.01 percentage points. This narrow margin is an important weakness of the proposed allocation.
+
+6. Independent Validation
+
+I ran project2_validation.py to check the calculations and portfolio model.
+
+The script returned:
+
+Validation Check
 
 Result
 
-Original assumptions
+Expected-return calculation
 
-6.51% expected return — PASS
+PASS
 
-Expected returns reduced by 0.25 percentage points
+Portfolio-volatility calculation
 
-6.26% — FAIL
+PASS
 
-Expected returns reduced by 0.50 percentage points
+Portfolio weights sum to 100%
 
-6.01% — FAIL
+PASS
+
+Covariance matrix is symmetric
+
+PASS
+
+Covariance matrix is positive semidefinite
+
+PASS
+
+Automated validation result: 5 of 5 checks passed.
+
+These checks support the mathematical consistency of the tested portfolio calculations. They do not independently certify every application feature, data source, or mandate interpretation.
+
+7. Stress-Test Results
+
+The original constrained allocation was held fixed while assumptions changed.
+
+Scenario
+
+Expected Net Return
+
+Volatility
+
+Mandate Verdict
+
+Original baseline
+
+6.51%
+
+9.44%
+
+PASS
+
+Expected returns −0.25 percentage points
+
+6.26%
+
+9.44%
+
+FAIL
+
+Expected returns −0.50 percentage points
+
+6.01%
+
+9.44%
+
+FAIL
+
+Volatility +25%
+
+6.51%
+
+11.80%
+
+PASS
+
+Transaction cost 10 basis points
+
+6.41%
+
+9.44%
+
+FAIL
+
+Transaction cost 25 basis points
+
+6.26%
+
+9.44%
+
+FAIL
 
 Reserve minimum increased to 25%
 
-Original 20% coverage — FAIL
+6.51%
 
-The application also included transaction-cost scenarios of 10 and 25 basis points.
+9.44%
 
-These tests demonstrated that the original allocation was sensitive to relatively small changes in assumptions.
+FAIL
 
-Changed-Input Results
+Stress-test summary:
 
-I reduced the expected returns of all four assets by 0.25 percentage points and allowed the constrained optimizer to calculate a new allocation.
+Two scenarios passed the currently checkable rules.
+
+Five scenarios failed at least one currently checkable rule.
+
+The application's process stop condition was triggered.
+
+The increased-volatility scenario passes because the implemented mandate does not contain a separate maximum-volatility threshold.
+
+These results demonstrate that the original portfolio is sensitive to changes in expected returns, transaction costs, and reserve requirements.
+
+8. Changed-Input Test
+
+For the changed-input test, I reduced the expected returns of all four assets by 0.25 percentage points and allowed the constrained optimizer to select a new portfolio.
 
 Measure
 
@@ -319,11 +374,19 @@ Reserve coverage
 
 5%
 
-The re-optimized portfolio continued meeting the 6.5% objective, but estimated volatility increased and reserve coverage declined.
+Before observing the changed-input results, I made an AI-off prediction that lowering expected returns would increase pressure to hold more global equities and raise portfolio volatility.
 
-My AI-off prediction correctly anticipated increased global equity exposure and higher estimated volatility.
+The observed results were consistent with those predictions.
 
-Historical Estimation-Window Results
+The original fixed allocation would produce a 6.26% expected return after the 0.25-percentage-point reduction. The re-optimized portfolio instead produced a 6.52% expected return by changing its weights.
+
+Although the new portfolio continued meeting the checkable return requirement, it had higher estimated volatility and lower reserve coverage.
+
+The AI-off prediction and its comparison with the observed results are documented separately. The repository history does not independently establish that the prediction was committed before the test was run.
+
+9. Historical Estimation-Window Sensitivity
+
+The historical analysis compares how portfolio estimates change when different estimation periods are used.
 
 Estimation Window
 
@@ -331,27 +394,27 @@ Portfolio
 
 Expected Return
 
-Volatility
+Annual Volatility
 
 Lab 14 assumptions
 
-Fixed allocation
+Original fixed allocation
 
 6.51%
 
 9.44%
 
-Full history
+Full historical sample
 
-Fixed allocation
+Original fixed allocation
 
 5.71%
 
 11.04%
 
-Full history
+Full historical sample
 
-Re-optimized
+Re-optimized allocation
 
 6.69%
 
@@ -359,7 +422,7 @@ Re-optimized
 
 Last 36 months
 
-Fixed allocation
+Original fixed allocation
 
 10.59%
 
@@ -367,162 +430,211 @@ Fixed allocation
 
 Last 36 months
 
-Re-optimized
+Re-optimized allocation
 
 7.02%
 
 2.35%
 
-The historical analysis demonstrated that portfolio estimates and optimized allocations can change substantially depending on the estimation window.
+The full historical sample causes the original allocation to fall below the 6.5% expected-return objective.
 
-8. Project Files
+The most recent 36-month window produces substantially different estimates.
 
-The main project files are organized as follows:
+These differences demonstrate estimation-window sensitivity. Historical estimates are not guaranteed forecasts, and the proxy data should not be interpreted as a fully point-in-time backtest.
+
+10. Investment Committee Decision
+
+Final Recommendation: DEFER IMPLEMENTATION
+
+Provisional New-Capital Allocation: 0%
+
+I recommend deferring implementation for five reasons:
+
+The original portfolio exceeds the return objective by only 0.01 percentage points.
+
+Five of seven stress scenarios fail at least one currently checkable requirement.
+
+The changed-input re-optimization increases estimated volatility while reducing reserve coverage.
+
+Historical return and volatility estimates vary substantially across estimation windows.
+
+The CIO's calendar-year loss rule remains unresolved, preventing complete mandate certification.
+
+The portfolio should be reconsidered after the CIO clarifies the outstanding rule, the model is tested with updated assumptions, and the strategy demonstrates acceptable robustness across additional scenarios.
+
+The recommendation is based on the completed validation rather than the original optimizer result alone.
+
+11. Project File Structure
+
+The Project 2 directory contains:
 
 burry/
 └── Project 2/
-    ├── README.md
+    ├── Project 2 README.md
+    ├── requirements.txt
     ├── project2_app.py
     ├── project2_portfolio.py
     ├── project2_validation.py
     ├── project2_signals.py
-    ├── [historical price CSV]
-    └── docs/
+    ├── compare_windows.py
+    ├── create_price_data.py
+    ├── monthly_prices.csv
+    └── Project 2 docs/
         ├── decision-memo.md
-        ├── validation-and-ai-use.md
-        ├── locked-changed-input-record.md
-        └── [video transcripts and submission manifest]
+        ├── Project 2 validation-and-ai-use.md
+        └── Project 2 Locked Changed Input.md
 
-The historical CSV and other supporting file names should match the files actually included in the submitted repository.
+The requirements.txt file is intended to be committed with the completed repository. Demonstration video links and transcripts will be added when available.
 
-9. How to Run the Application
+12. Installation and Reproduction Instructions
 
-Step 1 — Open the Repository
+Step 1 — Clone the Repository
 
-Open the FIN43900-Fall2026 repository in VS Code.
-
-Navigate to the Project 2 directory:
-
+git clone https://github.com/blancoaaliah-crypto/FIN43900-Project2.git
+cd FIN43900-Project2
 cd "burry/Project 2"
 
-Step 2 — Activate the Python Environment
+Step 2 — Create a Python Virtual Environment
 
-If using the repository's existing virtual environment on macOS:
+Python 3 is required. The project was run locally using Python 3.14; compatibility with other Python versions has not been independently verified.
 
-source ../../.venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 
-This command assumes the virtual environment is located at the repository root.
+On Windows, activate the environment using:
 
-Step 3 — Install Required Packages
+.venv\Scripts\activate
 
-The application uses Python, Streamlit, and portfolio analysis libraries.
+Step 3 — Install Dependencies
 
-Install the dependencies listed in the project's environment or requirements file, if available.
+python -m pip install -r requirements.txt
 
-Step 4 — Start Streamlit
+The required third-party packages are:
 
-Run:
+numpy
+pandas
+requests
+streamlit
+yfinance
 
-streamlit run project2_app.py
+Internet access may be required for installation and for application features that retrieve external market or interest-rate data.
 
-Streamlit will display a local URL where the application can be opened in a browser.
+Step 4 — Run the Validation Script
 
-Step 5 — Use the Application
+python project2_validation.py
 
-Within the application:
+The previously observed result was five passing checks:
 
-Review the investment mandate.
+Return calculation: PASS
+Volatility calculation: PASS
+Weights sum to 100%: PASS
+Covariance symmetric: PASS
+Covariance PSD: PASS
 
-Compare the baseline portfolios.
+The script also prints stress-test results and the process stop condition.
 
-Examine the constrained optimized allocation.
+Step 5 — Run the Historical Comparison
 
-Review the mandate compliance verdict.
+python compare_windows.py
 
-Evaluate the DGS10 point-in-time signal.
+The script prints historical expected-return and volatility estimates for the full available sample and the most recent 36 months.
 
-Run stress scenarios.
+Step 6 — Launch the Streamlit Application
 
-Compare historical estimation windows.
+python -m streamlit run project2_app.py
 
-Change expected-return assumptions and review re-optimization.
+Streamlit displays a local browser address.
 
-Review the investment committee recommendation.
+Once the application opens, review the portfolio construction, mandate compliance, point-in-time signal, stress tests, historical comparisons, changed-input results, and investment committee decision.
 
-10. Independent Validation and AI Use
+Step 7 — Reproduce the Changed-Input Test
 
-I completed independent application testing and reviewed the results across the portfolio construction, mandate compliance, point-in-time signal, stress-testing, changed-input, and historical estimation-window components.
+Begin with the original baseline expected returns:
 
-I also completed an AI-off prediction before running the changed-input test.
+Asset
 
-The prediction anticipated that lowering expected returns would make the objective more difficult to achieve, increase global equity exposure, and increase portfolio volatility.
+Original Return
 
-After running the test, I compared those expectations with the observed results and documented the discrepancy between fixed-allocation sensitivity and re-optimized performance.
+Changed Return
 
-AI tools assisted with coding, debugging, explanations, and documentation, but I reviewed the application outputs and made the final investment recommendation based on the completed validation.
+Treasury bills
 
-Further details are recorded in:
+3.50%
 
-docs/decision-memo.md
+3.25%
 
-docs/validation-and-ai-use.md
+10-year Treasury notes
 
-The separate Project 2 Locked Changed-Input Record
+4.30%
 
-Any required pre-test Git commit evidence must be supported by the actual repository history.
+4.05%
 
-11. Investment Committee Decision
+Investment-grade bonds
 
-Final Recommendation: Defer Implementation.
+5.00%
 
-The original constrained portfolio met the 6.5% annual return objective and passed the currently checkable mandate rules.
+4.75%
 
-However, the completed validation identified important concerns.
+Global equities
 
-The expected return cushion was narrow, fixed-allocation stress scenarios produced mandate failures, and historical estimates changed significantly across estimation windows.
+8.00%
 
-The changed-input test also showed that maintaining the return objective through re-optimization required higher estimated volatility and lower reserve coverage.
+7.75%
 
-The CIO's calendar-year loss rule remains undefined, preventing full mandate certification.
+Run the constrained optimization with the original inputs, then reduce each expected return by 0.25 percentage points and re-optimize.
 
-Provisional allocation of new capital: 0%.
+Compare the resulting portfolio weights, expected return, volatility, and reserve coverage with Section 8.
 
-The committee should reconsider implementation if the strategy demonstrates acceptable robustness under updated assumptions and the CIO clarifies the calendar-year loss rule.
+Reproducibility Limitations
 
-12. Demonstration Videos
+The project scripts and application were run successfully in an existing local Python virtual environment.
 
-The project submission includes three demonstration videos.
+A separate clean-environment installation and full end-to-end reproduction have not yet been independently verified.
+
+External data availability, library versions, and historical-data revisions may affect results.
+
+13. AI Use and Independent Review
+
+AI tools assisted with project planning, Python and Streamlit development, debugging, explanations, and documentation.
+
+I ran the application and validation scripts, reviewed the reported outputs, made an AI-off changed-input prediction, and evaluated the observed results against that prediction.
+
+The investment committee recommendation was based on the validation findings and documented model limitations.
+
+AI assistance does not replace independent verification. The repository includes validation documentation and a separate changed-input record.
+
+14. Demonstration Videos
+
+Three demonstration videos are planned for the Project 2 submission.
 
 Video 1 — Application Walkthrough
 
-Demonstrates the application interface, investment mandate, portfolio construction, and constrained optimization.
+Covers the investment mandate, portfolio strategies, constrained optimization, and application interface.
 
-YouTube link: [Add Video 1 URL]
+YouTube URL: [Add Video 1 URL]
 
 Video 2 — Validation and Stress Testing
 
-Demonstrates mandate checks, stress testing, historical estimation-window sensitivity, and point-in-time signal functionality.
+Covers independent calculation checks, mandate compliance, stress testing, historical estimation-window sensitivity, and the point-in-time signal.
 
-YouTube link: [Add Video 2 URL]
+YouTube URL: [Add Video 2 URL]
 
 Video 3 — Changed-Input Test and Investment Decision
 
-Demonstrates the changed-input test, prediction comparison, observed portfolio changes, and final investment committee recommendation.
+Covers the AI-off prediction, changed-input test, observed portfolio changes, and final investment committee recommendation.
 
-YouTube link: [Add Video 3 URL]
+YouTube URL: [Add Video 3 URL]
 
-Transcripts are included with the project submission.
+Transcripts and video links will be added when the recordings are completed.
 
-13. Final Project Conclusion
+15. Conclusion
 
-Project 2 demonstrates how Python and Streamlit can be used to build an investment management application that combines portfolio optimization, risk measurement, mandate checks, point-in-time signals, and scenario analysis.
+Project 2 demonstrates how Python and Streamlit can support investment management decisions through portfolio construction, quantitative validation, mandate checks, and scenario analysis.
 
-My completed validation showed that the constrained portfolio could meet the foundation's annual return objective under the original assumptions.
+The original constrained portfolio met the foundation's expected-return objective under the initial assumptions. However, the completed validation showed that the result was sensitive to small changes in expected returns, transaction costs, reserve requirements, and historical estimation windows.
 
-However, the portfolio's performance was sensitive to changes in expected returns, optimization assumptions, and historical estimation windows.
+Final decision: Defer implementation and provisionally allocate 0% of new capital.
 
-My final investment decision is to defer implementation based on the completed validation findings.
+This project illustrates why an investment decision should consider model reliability, robustness, and unresolved constraints rather than relying solely on an optimized portfolio.
 
-This decision reflects the importance of evaluating investment robustness rather than relying only on an optimizer's initial result.
-
-Educational Disclaimer: This application is intended for coursework and educational analysis only. It does not provide investment advice or recommend securities for real-world investment.
+Educational disclaimer: This application was developed for FIN 43900 coursework. It is an educational simulation and does not constitute financial or investment advice.
