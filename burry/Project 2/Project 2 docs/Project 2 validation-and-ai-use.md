@@ -9,7 +9,8 @@ Provisional New-Capital Allocation: 0%
 
 GitHub Repository: https://github.com/blancoaaliah-crypto/FIN43900-Project2
 Original Project Commit: 70133a3
-Updated Documentation Commit: d5baa81
+Updated Locked Changed-Input Commit: 9d2cd66
+Clean-Environment Evidence Commit: a147ad8
 
 1. Purpose
 
@@ -34,6 +35,8 @@ Historical estimation-window sensitivity analysis.
 Point-in-time interest-rate signal testing.
 
 Review of application outputs and financial assumptions.
+
+Fresh-environment reproduction testing.
 
 The objective was to evaluate whether the application's calculations were internally consistent, whether the implemented mandate rules behaved as expected, and whether the financial evidence supported an investment recommendation.
 
@@ -85,15 +88,15 @@ These values are illustrative modeling assumptions rather than live market forec
 
 Portfolio expected return is calculated using:
 
-$$
+[
 E(R_p)=\sum_{i=1}^{n}w_iE(R_i)
-$$
+]
 
 Portfolio volatility is calculated using:
 
-$$
+[
 \sigma_p=\sqrt{w^\top\Sigma w}
-$$
+]
 
 Where:
 
@@ -370,7 +373,6 @@ Increasing asset volatilities by 25% raised estimated portfolio volatility to ap
 Process Stop Condition
 
 Stop Condition: TRUE
-
 Failed Scenarios: 5
 
 The results demonstrate that the original portfolio's mandate compliance is sensitive to relatively small changes in financial assumptions and implementation requirements.
@@ -386,6 +388,8 @@ I predicted that lowering expected returns would make it more difficult to achie
 I also expected the optimizer to increase global equity exposure because equities had the highest expected return among the four asset classes.
 
 Finally, I expected estimated portfolio volatility to increase as the optimizer adjusted the allocation.
+
+The original prediction was directional and did not specify numerical magnitudes for the allocation or volatility changes.
 
 Changed-Input Test Setup
 
@@ -447,25 +451,29 @@ Reserve coverage
 
 Mandate verdict
 
-PASS
+PASS CHECKABLE RULES
 
-PASS
+PASS CHECKABLE RULES
 
 Prediction Versus Actual Results
 
 The actual results matched my prediction that global equity exposure and estimated portfolio volatility would increase.
 
-Global equity exposure increased from 55% to 60%.
+Global equity exposure increased from 55% to 60%, a 5-percentage-point increase.
 
-Estimated annual volatility increased from 9.44% to 10.36%.
+Estimated annual volatility increased from 9.44% to 10.36%, a 0.92-percentage-point increase.
 
 One result that surprised me was that the re-optimized portfolio still met the 6.5% annual return objective despite the reduction in expected returns.
 
 However, reserve coverage declined from 20% to 5%, leaving a smaller cushion above the foundation's 3% minimum.
 
-Discrepancy Diagnosis
+Quantitative Assessment
 
 If the original portfolio weights had remained unchanged, reducing every asset's expected return by 0.25 percentage points would have reduced portfolio expected return from 6.51% to 6.26%.
+
+[
+6.51%-0.25%=6.26%
+]
 
 That result would have failed the 6.5% return objective.
 
@@ -476,6 +484,8 @@ It reduced 10-year Treasury exposure from 20% to 5%, increased investment-grade 
 The revised portfolio achieved a 6.52% expected return, but with higher estimated volatility and lower reserve coverage.
 
 This demonstrates the distinction between fixed-allocation sensitivity and portfolio re-optimization.
+
+The numerical changes were measured after testing and are not presented as numerical predictions made beforehand.
 
 Prediction Lock and GitHub Evidence
 
@@ -490,7 +500,8 @@ Date: November 17, 2026
 
 The updated Locked Changed-Input Record was subsequently pushed under:
 
-Commit: d5baa81
+Commit: 9d2cd66
+Description: Strengthen Project 2 changed-input evidence and reversal triggers
 
 These commits preserve the project work and its documentation. They do not independently establish a pre-test Git lock because the original prediction and observed results were committed after testing.
 
@@ -714,7 +725,7 @@ My final investment recommendation was based on the financial evidence from the 
 
 Specific AI-Output Verification — Portfolio Expected Return
 
-AI-assisted output being checked: The baseline constrained portfolio has an expected annual return of 6.51%.
+Output evaluated: The reported baseline constrained portfolio expected annual return of 6.51%.
 
 Verification objective: Independently determine whether the reported expected return is mathematically correct using the portfolio weights and expected-return assumptions.
 
@@ -762,23 +773,23 @@ Independent Calculation
 
 Expected portfolio return is calculated as:
 
-$$
+[
 E(R_p)=\sum_i w_iE(R_i)
-$$
+]
 
 Substituting the portfolio inputs:
 
-$$
+[
 E(R_p)=(0.00)(0.035)+(0.20)(0.043)+(0.25)(0.05)+(0.55)(0.08)
-$$
+]
 
-$$
+[
 E(R_p)=0+0.0086+0.0125+0.044
-$$
+]
 
-$$
+[
 E(R_p)=0.0651=6.51%
-$$
+]
 
 Verification Results
 
@@ -790,7 +801,7 @@ Reported application return
 
 6.51%
 
-Independent calculated return
+Independently calculated return
 
 6.51%
 
@@ -806,9 +817,21 @@ Mathematical verification
 
 PASS
 
-Conclusion: The independent weighted-average calculation confirms that the baseline portfolio's expected annual return is 6.51% under the stated assumptions.
+AI-Output Verification Outcome
 
-This calculation was verified separately from the portfolio application.
+Output evaluated: The reported baseline portfolio expected annual return of 6.51%.
+
+Independent evidence: A separate weighted-average calculation using the four asset allocations and their expected-return assumptions.
+
+Calculated result: 6.51%.
+
+Difference from reported output: 0.00 percentage points.
+
+Verification decision: ACCEPT the reported numerical result as arithmetically correct under the stated assumptions.
+
+Scope: This verification supports the expected-return calculation only. It does not validate the underlying expected-return assumptions or the optimizer's selection of portfolio weights.
+
+Evidence limitation: The original AI-generated response or code suggestion associated with this output has not yet been identified. Therefore, the calculation is independently verified, but the connection to a specific AI output remains incomplete.
 
 Financial Interpretation
 
@@ -832,21 +855,38 @@ Repository: https://github.com/blancoaaliah-crypto/FIN43900-Project2
 
 Original Project Commit: 70133a3
 
-Updated Locked Changed-Input Documentation Commit: d5baa81
+Updated Locked Changed-Input Documentation Commit: 9d2cd66
+
+Clean-Environment Evidence Commit: a147ad8
 
 Reproduction Commands
 
 From the Project 2 directory:
 
+python -m pip install -r requirements.txt
 python project2_validation.py
 python compare_windows.py
-streamlit run project2_app.py
+python -m streamlit run project2_app.py
 
 These commands allow the calculation checks, historical comparison, and interactive application to be rerun in an appropriately configured Python environment.
 
-A complete cold-run verification also requires documented dependencies, data-file availability, any required configuration, and evidence that the application runs in a fresh environment.
+Completed Clean-Environment Reproduction
 
-Current evidence limitation: A fresh-environment run and its terminal output have not yet been documented in this record.
+On November 17, 2026, I completed a fresh-environment reproduction test using a separate GitHub clone and newly created Python virtual environment.
+
+The test successfully reproduced all five automated mathematical validation checks, the fixed-weight stress-testing results, and the historical estimation-window comparison. The Streamlit application also launched successfully.
+
+The reproduction procedure and observed results are documented in:
+
+burry/Project 2/Project 2 docs/clean-run-log.md
+
+Evidence commit: a147ad8
+
+This demonstrates that the project can be installed and executed outside my original development environment.
+
+The test was performed by the developer, not an independent external reviewer.
+
+The clean-run log documents the procedure and reported results. A separately preserved raw terminal transcript would provide stronger evidence of the complete execution history.
 
 The repository provides a record of the project code and documentation, but the original Git history does not independently establish the pre-test prediction timing.
 
@@ -873,6 +913,8 @@ Calendar-year loss rule: The CIO has not defined the rule sufficiently for the a
 AI verification evidence: The independent portfolio-return calculation is documented, but the original specific AI output still needs to be linked to that verification.
 
 Git evidence: The original prediction was completed before testing, but the Git commits were created afterward.
+
+Reproducibility: A clean-environment test was completed successfully on November 17, 2026. The application, mathematical checks, stress scenarios, and historical comparison were reproduced in a fresh Python environment. This establishes developer-performed technical reproducibility but does not constitute independent third-party validation.
 
 These limitations define the boundaries of the completed testing rather than indicating that the application was never tested.
 
@@ -915,6 +957,12 @@ Provisional Allocation of New Capital: 0%
 
 The investment committee should reconsider implementation only after updated assumptions, additional validation, and clarification of the CIO's calendar-year loss rule support approval.
 
+The proposed review procedure is to reassess the strategy within 30 calendar days after receiving the CIO's written clarification.
+
+Any reconsidered portfolio must meet the applicable mandate constraints and demonstrate an expected annual return of at least 6.5% after modeled transaction costs.
+
+Meeting these conditions would allow committee reconsideration, not automatic approval.
+
 The recommendation reflects the financial evidence and model limitations identified through testing.
 
 14. AI and Educational Disclosure
@@ -929,6 +977,6 @@ The independently calculated expected return of 6.51% matches the application's 
 
 AI-generated code and explanations were not treated as independently verified simply because they were produced by an AI tool.
 
-The calculation checks, stress tests, changed-input comparison, historical analysis, and documented limitations provide the basis for evaluating the application's outputs.
+The calculation checks, stress tests, changed-input comparison, historical analysis, clean-environment reproduction, and documented limitations provide the basis for evaluating the application's outputs.
 
 Final Conclusion: The application is useful as an investment decision-support tool, but the available financial evidence supports deferring implementation rather than immediately allocating foundation capital.
