@@ -16,7 +16,7 @@ For Project 2, I developed a Python and Streamlit investment management applicat
 
 The constrained portfolio produced an expected annual return of 6.51%, estimated annual volatility of 9.44%, and reserve-eligible coverage of 20%. Although this portfolio passed the currently checkable mandate requirements, its expected return exceeded the foundation's 6.5% objective by only 0.01 percentage points.
 
-I completed independent validation through automated calculation checks, baseline comparisons, stress testing, changed-input testing, historical estimation-window sensitivity analysis, and application output review.
+I completed validation through automated calculation checks, baseline comparisons, stress testing, changed-input testing, historical estimation-window sensitivity analysis, application output review, and clean-environment reproduction.
 
 The validation identified three significant concerns:
 
@@ -25,6 +25,10 @@ The original portfolio failed the return objective when expected returns were re
 Re-optimization under lower expected-return assumptions required greater global equity exposure, increased estimated volatility, and reduced reserve coverage.
 
 Historical estimation-window comparisons produced substantially different expected returns, volatility estimates, and portfolio allocations.
+
+The original portfolio exceeded the foundation's 6.5% return objective by only 0.01 percentage points. A 10-basis-point transaction-cost deduction reduced its modeled return to 6.41%, while a 0.25-percentage-point reduction in expected asset returns lowered the fixed-weight portfolio return to 6.26%.
+
+These results demonstrate that baseline mandate compliance depends on financial assumptions that may not remain stable during implementation.
 
 Additionally, the CIO's calendar-year loss rule remains unresolved, preventing complete confirmation of investment mandate compliance.
 
@@ -395,9 +399,9 @@ Reserve coverage
 
 Mandate verdict
 
-PASS
+PASS CHECKABLE RULES
 
-PASS
+PASS CHECKABLE RULES
 
 Financial Interpretation
 
@@ -705,17 +709,85 @@ Reproducibility review: Confirm that the application and supporting calculations
 
 These conditions provide a path toward a future investment decision without prematurely approving the current allocation.
 
+Measurable Reversal Triggers and Review Window
+
+The investment committee should reconsider the deferred strategy within 30 calendar days after receiving the CIO's written clarification of the calendar-year loss rule.
+
+At that review, the proposed portfolio must satisfy the following conditions:
+
+Requirement
+
+Reconsideration Threshold
+
+Expected annual return
+
+At least 6.5% after modeled transaction costs
+
+Reserve coverage
+
+At least 3%
+
+Five-business-day liquidity
+
+At least 90%
+
+Single-company issuer concentration
+
+No more than 8%, where applicable
+
+Calendar-year loss rule
+
+Written CIO clarification and documented compliance
+
+Stress-test results
+
+No unexplained material mandate failures
+
+Historical sensitivity
+
+Differences across estimation windows reviewed and explained
+
+Meeting these conditions would permit renewed investment committee consideration, not automatic approval.
+
+The 30-day review window is a proposed governance procedure rather than an existing mandate requirement.
+
+Until these conditions are satisfied, the recommendation remains DEFER IMPLEMENTATION, with 0% of new capital allocated to the proposed strategy.
+
 10. Reproducibility, Evidence, and Model Limitations
 
 The Project 2 GitHub repository contains the application and supporting project documentation.
 
 Repository: https://github.com/blancoaaliah-crypto/FIN43900-Project2
 
+GitHub Evidence
+
+Evidence
+
+GitHub Commit
+
+Original Project 2 application
+
+70133a3
+
+Clean-environment reproduction
+
+a147ad8
+
+Updated Locked Changed-Input Record
+
+9d2cd66
+
+Updated Validation and AI-Use Record
+
+a63c55a
+
 The supporting documentation includes:
 
 Project 2 Validation and AI-Use Record.
 
 Project 2 Locked Changed-Input Record.
+
+Clean-environment reproduction log.
 
 Application code and portfolio calculations.
 
@@ -724,6 +796,24 @@ Automated validation and historical comparison scripts.
 The Validation and AI-Use Record contains additional details about the automated checks, stress scenarios, changed-input testing, AI assistance, and independent review.
 
 The Locked Changed-Input Record documents the original AI-off prediction, changed assumptions, observed results, and timing limitation.
+
+Completed Reproducibility Evidence
+
+On November 17, 2026, I completed a fresh-environment reproduction test using a separate GitHub clone and newly created Python virtual environment.
+
+The test successfully reproduced all five automated calculation checks, the fixed-weight stress-testing results, and the historical estimation-window comparison. The Streamlit application also launched successfully.
+
+The reproduction procedure and results are documented in:
+
+burry/Project 2/Project 2 docs/clean-run-log.md
+
+GitHub evidence commit: a147ad8
+
+This provides evidence that the application can be installed and executed outside its original development environment.
+
+The test was completed by the developer and does not constitute independent third-party validation.
+
+Model Limitations
 
 The project has several limitations that should be considered when interpreting its results.
 
@@ -737,7 +827,9 @@ The liquidity and issuer-concentration checks rely on modeled assumptions and ex
 
 The CIO's calendar-year loss rule remains unresolved.
 
-Although the application has been run and tested in the development environment, a fully documented fresh-environment reproduction remains to be completed.
+The original AI-off prediction was not committed before the changed-input test, so its timing is not independently established by Git history.
+
+The specific original AI-generated output associated with the independent return verification has not yet been linked to the supporting evidence.
 
 These limitations do not invalidate the completed calculations, but they restrict the conclusions that can reasonably be drawn from them.
 
@@ -758,6 +850,10 @@ The historical analysis further demonstrated that portfolio estimates and recomm
 The unresolved calendar-year loss rule also prevents full confirmation of investment mandate compliance.
 
 For these reasons, my final recommendation is to DEFER IMPLEMENTATION and allocate 0% of new capital to the proposed portfolio until the identified concerns have been addressed.
+
+The proposed investment committee review window is 30 calendar days after the CIO provides written clarification of the unresolved loss requirement.
+
+At that review, the portfolio must satisfy the documented mandate thresholds and receive investment committee approval before implementation.
 
 This decision reflects the importance of evaluating portfolio robustness, investment mandate compliance, and model limitations rather than relying solely on an optimizer's initial result.
 
