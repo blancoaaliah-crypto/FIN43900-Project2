@@ -3,8 +3,9 @@ Project 2 — Locked Changed-Input Record
 Course: FIN 43900 — AI-Augmented Finance
 Project: Meridian Foundation Reserve
 Test: Expected-Return Assumption Change
-Test status: Completed
-GitHub repository: https://github.com/blancoaaliah-crypto/FIN43900-Project2
+Test Status: Completed
+Test Date: November 17, 2026
+GitHub Repository: https://github.com/blancoaaliah-crypto/FIN43900-Project2
 
 1. Test Setup
 
@@ -66,7 +67,7 @@ I expected the optimizer to increase global equity exposure because global equit
 
 I also expected the revised portfolio to have higher annual volatility because increased equity exposure would likely increase overall portfolio risk.
 
-My predictions were:
+My original directional predictions were:
 
 Global equity exposure would increase.
 
@@ -78,9 +79,11 @@ Reserve coverage could decline as the optimizer adjusted the portfolio.
 
 These predictions were based on the relative expected returns of the available investments and the constraints used in the optimization model.
 
+The original prediction did not specify a numerical magnitude for the allocation or volatility change. Quantitative results are evaluated separately in Section 9 rather than presented as predictions made before testing.
+
 4. Prediction Lock and GitHub Evidence
 
-AI-off prediction status: Completed before running the changed-input test.
+AI-off prediction status: Reported as completed before running the changed-input test.
 
 Pre-test Git commit: Not created at the time of the original test.
 
@@ -88,14 +91,16 @@ I completed my AI-off prediction before running the changed-input test. However,
 
 After completing the test, I preserved my prediction, observed results, financial analysis, and application code in the repository.
 
-GitHub commit: 70133a3
-Commit timestamp: November 17, 2026, at 4:09 PM EST
+Completed-project commit: 70133a3
+Commit date: November 17, 2026
+Recorded timestamp: 4:09 PM EST
 Commit description: Add Project 2 investment management application
-Repository: https://github.com/blancoaaliah-crypto/FIN43900-Project2
 
 This commit preserves the completed work, including the prediction and actual results.
 
-Because the commit was created after the test, it does not independently establish the original prediction's timing. The missing pre-test Git commit is an evidence limitation, not an indication that the AI-off prediction was omitted.
+Because the commit was created after the test, it does not independently establish the original prediction's timing. The missing pre-test Git commit remains an evidence limitation.
+
+I do not represent this commit as proof of a prediction locked before execution.
 
 5. Baseline Financial Assumptions
 
@@ -136,7 +141,7 @@ These are illustrative portfolio modeling assumptions rather than live market fo
 Expected portfolio return is calculated as:
 
 [
-E(R_p)=\sum_i w_iE(R_i)
+E(R_p)=\sum_i w_i E(R_i)
 ]
 
 Portfolio volatility is calculated as:
@@ -175,9 +180,14 @@ Total
 
 100%
 
+Original portfolio metrics:
+
 Expected annual return: 6.51%
+
 Estimated annual volatility: 9.44%
+
 Reserve coverage: 20%
+
 Mandate verdict: PASS CHECKABLE RULES
 
 The original portfolio met the implemented mandate checks but exceeded the required return by only 0.01 percentage points.
@@ -242,9 +252,14 @@ Total
 
 100%
 
+Revised portfolio metrics:
+
 Expected annual return: 6.52%
+
 Estimated annual volatility: 10.36%
+
 Reserve coverage: 5%
+
 Mandate verdict: PASS CHECKABLE RULES
 
 The revised portfolio still passed the currently implemented mandate checks, but its estimated volatility increased and reserve coverage declined.
@@ -329,6 +344,24 @@ Global equity exposure increased from 55% to 60%, and estimated annual volatilit
 
 The optimizer accepted greater modeled risk to compensate for lower expected returns.
 
+Quantitative Assessment of the Prediction
+
+The original portfolio had an expected return of 6.51%. Reducing every asset's expected return by 0.25 percentage points would lower the fixed-weight portfolio return to:
+
+[
+6.51%-0.25%=6.26%
+]
+
+This would fall below the foundation's 6.5% return objective by 0.24 percentage points.
+
+The optimizer instead increased global equity exposure from 55% to 60%, an increase of 5 percentage points.
+
+Estimated annual volatility rose from 9.44% to 10.36%, an increase of 0.92 percentage points.
+
+Reserve coverage declined from 20% to 5%, a reduction of 15 percentage points.
+
+These numerical results support the predicted direction of change. However, the original AI-off prediction did not specify a numerical magnitude for the allocation or volatility change, so the magnitudes are evaluated retrospectively rather than claimed as pre-test forecasts.
+
 What surprised me?
 
 I was surprised that the revised portfolio still achieved the 6.5% return objective despite the reduction in expected returns across all four assets.
@@ -393,7 +426,7 @@ The application is therefore a decision-support tool rather than an automatic in
 
 The portfolio validation script was executed to evaluate calculation consistency and sensitivity to adverse assumptions.
 
-Calculation checks
+Calculation Checks
 
 Validation Check
 
@@ -423,7 +456,7 @@ All five checks passed.
 
 These checks demonstrate internal calculation consistency but do not independently establish the accuracy of the financial assumptions.
 
-Fixed-weight stress tests
+Fixed-Weight Stress Tests
 
 Scenario
 
@@ -569,6 +602,8 @@ Undefined or unverified
 
 Continue deferral
 
+These triggers distinguish a portfolio that passes numerical constraints from one that is sufficiently robust for investment committee approval.
+
 15. Conditions for Reconsideration
 
 Implementation may be reconsidered only after updated financial assumptions and additional validation support the strategy.
@@ -591,17 +626,37 @@ Receive explicit investment committee approval.
 
 Any unfavorable stress-test or sensitivity results must be reviewed and explained before implementation.
 
+Proposed Review Window and Reversal Conditions
+
+As a proposed governance procedure, the investment committee should reassess the deferred strategy within 30 calendar days after receiving the CIO's written clarification of the calendar-year loss rule.
+
+At that review, implementation should be reconsidered only if a documented portfolio:
+
+Achieves at least 6.5% expected annual return after modeled transaction costs.
+
+Maintains reserve coverage of at least 3%.
+
+Maintains five-business-day liquidity of at least 90%.
+
+Complies with applicable issuer concentration limits.
+
+Demonstrates acceptable results under updated assumptions and the committee's specified stress scenarios.
+
+Meeting these conditions would permit renewed committee consideration, not automatic investment approval.
+
+The 30-day window is a proposed review procedure, not an existing requirement of the foundation's investment mandate.
+
 Until these conditions are satisfied, the recommendation remains DEFER, with 0% of new capital allocated to the proposed strategy.
 
 16. Reproducibility and Evidence
 
-GitHub repository: https://github.com/blancoaaliah-crypto/FIN43900-Project2
+GitHub Repository: https://github.com/blancoaaliah-crypto/FIN43900-Project2
 
-Completed-project commit: 70133a3
+Original completed-project commit: 70133a3
+Commit date: November 17, 2026
+Recorded timestamp: 4:09 PM EST
 
-Commit timestamp: November 17, 2026, 4:09 PM EST
-
-Relevant files
+Relevant Files
 
 project2_app.py — Interactive Streamlit investment application.
 
@@ -613,11 +668,13 @@ compare_windows.py — Historical estimation-window comparison.
 
 monthly_prices.csv — Historical price data.
 
-Project2 validation-and-ai-use.md — Validation and AI-use documentation.
+Project 2 validation-and-ai-use.md — Validation and AI-use documentation.
 
 decision-memo.md — Investment committee recommendation.
 
-Reproduction procedure
+clean-run-log.md — Fresh-environment reproduction evidence.
+
+Changed-Input Reproduction Procedure
 
 Open the Project 2 application.
 
@@ -633,7 +690,28 @@ Record the revised allocation, expected return, volatility, reserve coverage, an
 
 Compare the observed results with this document.
 
-Evidence limitation: The completed-project Git commit preserves the prediction and results but does not independently verify a pre-test Git lock.
+Clean-Environment Reproduction Evidence
+
+On November 17, 2026, I completed a fresh-environment reproduction test using a separate GitHub clone and newly created Python virtual environment.
+
+The test successfully reproduced all five automated mathematical validation checks, the stress-testing results, the historical estimation-window comparison, and the Streamlit application startup.
+
+The completed reproduction log is available at:
+
+burry/Project 2/Project 2 docs/clean-run-log.md
+
+Git commit: a147ad8
+Commit description: Add Project 2 clean-environment reproduction evidence
+
+This provides additional evidence of technical reproducibility. It does not establish that the original AI-off prediction was committed before the changed-input test.
+
+Evidence Limitation
+
+The original completed-project Git commit preserves the AI-off prediction and observed results, but it does not independently verify a pre-test Git lock.
+
+The original prediction timing therefore remains self-reported.
+
+No later commit is presented as proof that the prediction was locked before execution.
 
 17. Final Conclusion
 
@@ -647,6 +725,6 @@ The original allocation failed multiple stress scenarios, reinforcing concerns a
 
 Although the application identified a feasible revised allocation, the available evidence does not justify immediate implementation.
 
-Final investment recommendation: DEFER IMPLEMENTATION.
+Final Investment Recommendation: DEFER IMPLEMENTATION.
 
-Recommended new-capital allocation: 0% until additional validation, mandate clarification, and investment committee approval are completed.
+Recommended New-Capital Allocation: 0% until additional validation, mandate clarification, and investment committee approval are completed.
