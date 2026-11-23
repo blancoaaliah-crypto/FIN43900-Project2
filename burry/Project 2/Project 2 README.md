@@ -615,23 +615,23 @@ AI assistance does not replace independent verification. The repository includes
 
 Three demonstration videos are planned for the Project 2 submission.
 
-Video 1 — Application Walkthrough
+Video 1 How My System and Thinking Changed
 
-Covers the investment mandate, portfolio strategies, constrained optimization, and application interface.
+Explains how validation changed my thinking and demonstrates an AI-assisted output I independently checked.
 
 YouTube URL: https://youtu.be/trDxlq2ADJs 
 Transcript: burry/Project 2/Project 2 docs/Transcript Video 1 - How my system and thinking changed.docx
 
-Video 2 — Validation and Stress Testing
+Video 2 — Python Code Walkthrough
 
-Covers independent calculation checks, mandate compliance, stress testing, historical estimation-window sensitivity, and the point-in-time signal.
+Explains the Python architecture, portfolio calculations, historical signal, and validation scripts.
 
 YouTube URL: https://youtu.be/aPTJ8fkaKuY
 Transcript: burry/Project 2/Project 2 docs/Transcript Video 2 - Code Walkthrough.docx
 
-Video 3 — Changed-Input Test and Investment Decision
+Video 3 — Investment Committee Presentation
 
-Covers the AI-off prediction, changed-input test, observed portfolio changes, and final investment committee recommendation.
+Presents the running app, portfolio results, stress testing, and final recommendation to defer implementation.
 
 YouTube URL: https://youtu.be/0DZdWzHcZcM
 Transcript: burry/Project 2/Project 2 docs/Transcript Video 3 - Investment committee presentation .docx
