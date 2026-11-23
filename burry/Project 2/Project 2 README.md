@@ -619,19 +619,22 @@ Video 1 — Application Walkthrough
 
 Covers the investment mandate, portfolio strategies, constrained optimization, and application interface.
 
-YouTube URL: [Add Video 1 URL]
+YouTube URL: https://youtu.be/trDxlq2ADJs 
+Transcript: burry/Project 2/Project 2 docs/Transcript Video 1 - How my system and thinking changed.docx
 
 Video 2 — Validation and Stress Testing
 
 Covers independent calculation checks, mandate compliance, stress testing, historical estimation-window sensitivity, and the point-in-time signal.
 
-YouTube URL: [Add Video 2 URL]
+YouTube URL: https://youtu.be/aPTJ8fkaKuY
+Transcript: burry/Project 2/Project 2 docs/Transcript Video 2 - Code Walkthrough.docx
 
 Video 3 — Changed-Input Test and Investment Decision
 
 Covers the AI-off prediction, changed-input test, observed portfolio changes, and final investment committee recommendation.
 
-YouTube URL: [Add Video 3 URL]
+YouTube URL: https://youtu.be/0DZdWzHcZcM
+Transcript: burry/Project 2/Project 2 docs/Transcript Video 3 - Investment committee presentation .docx
 
 Transcripts and video links will be added when the recordings are completed.
 
